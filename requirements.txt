@@ -1,8 +1,5 @@
-# 必要なライブラリを最初にインストール
+opencv-python-headless==4.5.5.64
 numpy
 pillow
-opencv-python-headless==4.5.5.64
-
-# その他のライブラリ
 streamlit
 mediapipe
