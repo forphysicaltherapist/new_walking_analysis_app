@@ -42,3 +42,6 @@ COPY . /app
 # アプリの起動
 CMD ["streamlit", "run", "app.py", "--server.port=8501", "--server.address=0.0.0.0"]
 
+# シンボリックリンクの作成
+RUN ln -s /usr/lib/x86_64-linux-gnu/libGL.so.1 /usr/lib/libGL.so
+
