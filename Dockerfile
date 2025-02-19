@@ -33,6 +33,9 @@ RUN apt-get update && \
 COPY requirements.txt /app/requirements.txt
 RUN pip install --no-cache-dir -r /app/requirements.txt
 
+# OpenCV の代替インストール
+RUN pip install --no-cache-dir opencv-contrib-python-headless==4.5.5.64
+
 # アプリのソースコードをコピー
 COPY . /app
 
