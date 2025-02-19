@@ -7,7 +7,7 @@ import mediapipe as mp
 import pandas as pd
 import plotly.express as px
 from supabase import create_client, Client
-from openai import OpenAI
+import openai
 import json
 
 # ✅ 環境変数を読み込む
