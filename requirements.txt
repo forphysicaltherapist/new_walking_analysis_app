@@ -8,4 +8,5 @@ mediapipe
 pandas
 numpy
 plotly==5.15.0
-
+supabase==2.13.0
+httpx
