@@ -1,1 +1,5 @@
 .streamlit/secrets.toml
+# 大きなファイルを除外
+*.so
+*.dylib
+*.dll
