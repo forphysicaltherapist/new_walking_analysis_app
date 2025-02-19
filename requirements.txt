@@ -5,5 +5,7 @@ numpy
 pillow
 streamlit
 mediapipe
+pandas
+numpy
 plotly==5.15.0
 
