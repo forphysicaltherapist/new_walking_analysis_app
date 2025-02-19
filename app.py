@@ -18,8 +18,8 @@ OPENAI_API_KEY = st.secrets["OPENAI_API_KEY"]
 # ✅ Supabase クライアントを作成
 supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
 
-# ✅ OpenAI クライアントを作成
-client = OpenAI(api_key=OPENAI_API_KEY)
+# ✅ OpenAI API キーの設定
+openai.api_key = OPENAI_API_KEY
 
 # ✅ Mediapipe のセットアップ
 mp_pose = mp.solutions.pose
@@ -125,7 +125,7 @@ if uploaded_file:
             どのスコアが良く、どのスコアが改善の余地があるか説明してください。
             """
 
-            response = client.chat.completions.create(
+            response = openai.ChatCompletion.create(
                 model="gpt-3.5-turbo",
                 messages=[
                     {"role": "system", "content": "あなたは歩行解析の専門家です。"},
@@ -133,18 +133,9 @@ if uploaded_file:
                 ]
             )
 
-            return response.choices[0].message.content
+            return response["choices"][0]["message"]["content"]
 
         ai_analysis = generate_ai_analysis(scores)
 
         st.subheader("📖 AI による解析解説")
         st.write(ai_analysis)
-
-        # ✅ Supabase にデータを保存
-        supabase.table("walking_analysis").insert({
-            "scores": json.dumps(scores),
-            "ai_analysis": ai_analysis
-        }).execute()
-
-        st.success("データをクラウドに保存しました！")
-
